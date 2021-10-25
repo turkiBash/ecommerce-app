@@ -4,7 +4,7 @@ import React from 'react'
 
 
 const IndexPage = () => {
-  const {toggleColorMode} = useColorMode()
+  const { toggleColorMode } = useColorMode()
   const formBackground = useColorModeValue("gray.100", "gray.700")
   return (
     <Container maxW="container.xl" p={0}>
