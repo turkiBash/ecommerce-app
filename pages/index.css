@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'ZenKurenaido';
+    font-weight: 400;
+    src: url(../fonts/ZenKurenaido-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'ZenKurenaido';
+    font-weight: 800;
+    src: url(./fonts/ZenKurenaido-Regular.ttf) format('truetype');
+}
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+html {
+    scroll-behavior: smooth;
+}
