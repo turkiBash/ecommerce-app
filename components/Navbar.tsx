@@ -13,8 +13,10 @@ import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 import { ImCart } from 'react-icons/im'
 
 const Navbar = () => {
-    const { toggleColorMode } = useColorMode()
-    const formBackground = useColorModeValue('red.700', 'red.700')
+    const { colorMode, toggleColorMode } = useColorMode()
+    const formBackground = useColorModeValue('#392061', '#2a1e43')
+    const formBackground2 = useColorModeValue('#2a1e43', '#392061')
+
     return (
         <Flex
             as="nav"
@@ -40,7 +42,7 @@ const Navbar = () => {
                 </Button>
             </Link>
             <Button as="a" variant="ghost" m={3} onClick={toggleColorMode}>
-                {'light' ? <MoonIcon /> : <SunIcon />}
+                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
             </Button>
 
             <Flex as="nav" dir="column" justifyContent="flex-end" width="full">
