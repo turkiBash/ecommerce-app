@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Mohave';
+    font-weight: 400;
+    src: url(../assets/fonts/Mohave-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Mohave';
+    font-weight: 800;
+    src: url(../assets/fonts/Mohave-Medium.ttf) format('truetype');
+}
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+html {
+    scroll-behavior: smooth;
+}
