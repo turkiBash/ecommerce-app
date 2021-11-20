@@ -26,6 +26,7 @@ const Navbar = () => {
             justifyContent="flex-start"
             // bgColor={formBackground}
             position="sticky"
+            boxShadow="md"
         >
             <Link href="/products/">
                 <Button as="a" variant="ghost" m={3}>
