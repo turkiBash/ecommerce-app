@@ -18,10 +18,11 @@ const ProductsPage = ({ data }) => {
     const addProductsToCart = useStore((state) => state.addProductsToCart)
     const products = useStore((state) => state.products)
     // const [addToCart, setAddToCart] = useState([])
-    console.log(data)
 
-    const addToCart = () => {
+    const addToCart = (product: any) => {
+        alert('I am here')
         addProductsToCart
+        ;('product 1 okkkk')
     }
 
     console.log(products)
@@ -55,7 +56,9 @@ const ProductsPage = ({ data }) => {
                         </Link>
                         <Text m={4}>{product.title}</Text>
                         <Text p={1}>${product.price}</Text>
-                        <Button onClick={addToCart}>Add to Cart</Button>
+                        <Button onClick={() => addToCart(product)}>
+                            Add to Cart
+                        </Button>
                     </Box>
                 ))}
             </SimpleGrid>
