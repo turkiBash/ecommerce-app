@@ -59,7 +59,7 @@ const Navbar = () => {
                     />
                     <InputRightElement width="4.5rem">
                         <Button
-                            _focus="none"
+                            // _focus="none"
                             variant="unstyled"
                             mr={4}
                             mt={6}

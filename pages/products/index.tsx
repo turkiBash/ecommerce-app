@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Box, Flex, SimpleGrid, Text } from '@chakra-ui/layout'
 import { Button, Image } from '@chakra-ui/react'
 import axios from 'axios'
@@ -14,15 +14,14 @@ export const getStaticProps = async () => {
     }
 }
 
-const ProductsPage = (props : any) => {
-    const {data} = props;
-    const {addProductToCart , products} = useStore()
+const ProductsPage = (props: any) => {
+    const { data } = props
+    const { addProductToCart, products } = useStore()
     // const [addToCart, setAddToCart] = useState([])
     const addToCart = (product: any) => {
-        console.log(product.id);
-        
+        console.log(product.id)
+
         addProductToCart(product)
-        
     }
 
     console.log(products)
@@ -30,7 +29,7 @@ const ProductsPage = (props : any) => {
     return (
         <Flex justifyContent="center" overflow="hidden">
             <SimpleGrid columns={5} spacing={5} alignItems="center">
-                {data.map((product : any, index : number) => (
+                {data.map((product: any, index: number) => (
                     <Box
                         boxSize="400px"
                         w="300px"
