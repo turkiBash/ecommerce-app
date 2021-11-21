@@ -1,22 +1,31 @@
 import create from 'zustand'
 import { persist } from 'zustand/middleware'
 
-export const useStore = create(
+export type CartState = {
+    products: any[];
+    addProductToCart: (product: any) => void;
+    removeProductFromCart: (index: number) => void;
+  };
+  
+
+export const useStore = create<CartState>(
     persist(
         (set) => ({
             products: [],
             addProductToCart: (product: any) => {
-                set((state: any) => {
-                    products: [...state.products, product]
-                })
-            },
+                set((state) => ({
+                    products: [
+                    ...state.products,
+                    product,
+                  ],
+                }));
+              },
             removeProductFromCart: (id: number) => {
-                set((state: any) => {
-                    products: state.products.filter(
-                        (product: any) => product.id !== id
-                    )
-                })
-            },
+                set((state) => ({
+                    products: state.products.filter((product : any) => product.id !== id),
+                }));
+              },
+
         }),
         { name: 'cart' }
     )

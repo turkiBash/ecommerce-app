@@ -14,15 +14,15 @@ export const getStaticProps = async () => {
     }
 }
 
-const ProductsPage = ({ data }) => {
-    const addProductsToCart = useStore((state) => state.addProductsToCart)
-    const products = useStore((state) => state.products)
+const ProductsPage = (props : any) => {
+    const {data} = props;
+    const {addProductToCart , products} = useStore()
     // const [addToCart, setAddToCart] = useState([])
-
     const addToCart = (product: any) => {
-        alert('I am here')
-        addProductsToCart
-        ;('product 1 okkkk')
+        console.log(product.id);
+        
+        addProductToCart(product)
+        
     }
 
     console.log(products)
@@ -30,7 +30,7 @@ const ProductsPage = ({ data }) => {
     return (
         <Flex justifyContent="center" overflow="hidden">
             <SimpleGrid columns={5} spacing={5} alignItems="center">
-                {data.map((product, index) => (
+                {data.map((product : any, index : number) => (
                     <Box
                         boxSize="400px"
                         w="300px"
