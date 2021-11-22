@@ -15,8 +15,9 @@ const cart = () => {
 
     const removeHandler = (id: number) => {
         removeProductFromCart(id)
+        console.log(products)
     }
-    // console.log(products)
+
     return (
         <Stack
             dir={'column'}
@@ -35,6 +36,7 @@ const cart = () => {
                             src={product.image}
                             boxSize="100px"
                             objectFit="contain"
+                            key={id}
                         />
                     </Box>
                     <Text>{product.title}</Text>

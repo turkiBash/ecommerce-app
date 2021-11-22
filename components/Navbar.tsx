@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import {
     Avatar,
+    Box,
     Button,
     Flex,
     IconButton,
@@ -14,10 +15,12 @@ import {
 } from '@chakra-ui/react'
 import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 import { ImCart } from 'react-icons/im'
+import useStore from '../store/useStore'
 
 const Navbar = () => {
     const { colorMode, toggleColorMode } = useColorMode()
     const formBackground = useColorModeValue('blue.300', '#2a1e43')
+    const { products } = useStore()
 
     return (
         <Flex
@@ -48,10 +51,16 @@ const Navbar = () => {
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
             </Button>
 
-            <Flex as="nav" dir="column" justifyContent="flex-end" width="full">
+            <Flex
+                as="nav"
+                dir="column"
+                justifyContent="flex-end"
+                width="full"
+                alignItems="center"
+            >
                 <InputGroup size="md">
                     <Input
-                        m={3}
+                        m={2}
                         w="full"
                         pr="4.5rem"
                         type="search"
@@ -70,18 +79,32 @@ const Navbar = () => {
                         </Button>
                     </InputRightElement>
                 </InputGroup>
-
-                <Link href="/cart">
-                    <a>
-                        <IconButton
-                            aria-label="Cart"
-                            icon={<ImCart />}
-                            variant="ghost"
-                            size="lg"
-                            m={2}
-                        />
-                    </a>
-                </Link>
+                <Flex
+                    width="auto"
+                    alignItems="center"
+                    wrap="wrap"
+                    justifyContent="center"
+                >
+                    <Link href="/cart">
+                        <a>
+                            <IconButton
+                                aria-label="Cart"
+                                icon={<ImCart />}
+                                variant="ghost"
+                                outline="none"
+                                size="md"
+                                m={2}
+                            />
+                        </a>
+                    </Link>
+                    {products.length > 0 ? (
+                        <Box as="span" alignItems="center" p={-10}>
+                            {products.length}
+                        </Box>
+                    ) : (
+                        ''
+                    )}
+                </Flex>
                 <Link href="/profile">
                     <a>
                         <Avatar m="2"></Avatar>

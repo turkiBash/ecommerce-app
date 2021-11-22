@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Flex, SimpleGrid, Text } from '@chakra-ui/layout'
+import { Box, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/layout'
 import { Button, Image } from '@chakra-ui/react'
 import axios from 'axios'
 import Link from 'next/link'
@@ -28,36 +28,50 @@ const ProductsPage = (props: any) => {
 
     return (
         <Flex justifyContent="center" overflow="hidden">
-            <SimpleGrid columns={5} spacing={5} alignItems="center">
+            <SimpleGrid columns={3} spacing={5} alignItems="center">
                 {data.map((product: any, index: number) => (
                     <Box
                         boxSize="400px"
-                        w="300px"
-                        h="400px"
-                        objectFit="cover"
+                        // w="300px"
+                        // h="400px"
+                        objectFit="fill"
                         // maxW="100%"
                         overflow="hidden"
-                        p={4}
-                        m={8}
+                        p={3}
+                        m={3}
                         // value={product.id}
                         key={index}
                     >
                         {/* <Heading>Products</Heading> */}
                         <Link href={'/products/' + product.id} key={product.id}>
                             <a>
-                                <Image
-                                    src={product.image}
-                                    boxSize="200px"
-                                    boxShadow="2xl"
-                                    objectFit="contain"
-                                />
+                                <Flex justifyContent="center">
+                                    <Image
+                                        src={product.image}
+                                        boxSize="200px"
+                                        boxShadow="2xl"
+                                        objectFit="contain"
+                                    />
+                                </Flex>
                             </a>
                         </Link>
-                        <Text m={4}>{product.title}</Text>
-                        <Text p={1}>${product.price}</Text>
-                        <Button onClick={() => addToCart(product)}>
-                            Add to Cart
-                        </Button>
+                        <Flex
+                            flexDirection="column"
+                            justifyContent="center"
+                            alignContent="space-around"
+                            wrap="wrap"
+                            alignItems="center"
+                        >
+                            <Text fontSize="16px" m={4}>
+                                {product.title}
+                            </Text>
+                            <Text m={4}>${product.price}</Text>
+                        </Flex>
+                        <Flex justifyContent="center">
+                            <Button onClick={() => addToCart(product)}>
+                                Add to Cart
+                            </Button>
+                        </Flex>
                     </Box>
                 ))}
             </SimpleGrid>
