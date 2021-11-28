@@ -1,18 +1,34 @@
-import { Box, Flex, Stack, StackDivider, Text } from '@chakra-ui/layout'
+import {
+    Box,
+    Center,
+    Flex,
+    Heading,
+    Stack,
+    StackDivider,
+    Text,
+} from '@chakra-ui/layout'
 import { Button, Image } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
 import useStore from '../store/useStore'
 
 const cart = () => {
-    const { products, removeProductFromCart } = useStore()
+    const { products, addItemToCart, removeItemToCart, removeProductFromCart } =
+        useStore()
+    const [num, setNum] = useState(1)
+
+    const removeHandler = (id: number) => {
+        removeProductFromCart(id)
+    }
 
     return (
         <Stack
             dir={'column'}
             spacing="2px"
+            height="container.xl"
             divider={<StackDivider borderColor="gray.200" />}
         >
-            {products.map((product: any) => (
+            {products.length === 0 ? <Heading mt={3}><Center>Your Cart is empty</Center></Heading> : 
+            products.map((product: any) => (
                 <Flex
                     justify="flex-start"
                     alignItems="center"
@@ -29,11 +45,17 @@ const cart = () => {
                     </Box>
                     <Text>{product.title}</Text>
                     <Text p={4}>${product.price}</Text>
-                    <Button onClick={() => removeProductFromCart(product.id)}>
+                    <Button onClick={() => removeItemToCart(product.id)}>
+                        -
+                    </Button>
+                    <Box as="span">{num}</Box>
+                    <Button onClick={() => addItemToCart(product.id)}>+</Button>
+                    <Button onClick={() => removeHandler(product.id)}>
                         Remove
                     </Button>
                 </Flex>
             ))}
+}
         </Stack>
     )
 }

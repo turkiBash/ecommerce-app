@@ -3,6 +3,7 @@ import { persist } from 'zustand/middleware'
 
 export type CartState = {
     products: any[]
+    itemsInCart: any[]
     addProductToCart: (product: any) => void
     removeProductFromCart: (id: number) => void
 }
@@ -19,8 +20,18 @@ const useStore = create<CartState>(
             removeProductFromCart: (id: number) => {
                 set((state) => ({
                     products: state.products.filter(
-                        (prod: number) => prod.id !== id
+                        (product: number) => product.id !== id
                     ),
+                }))
+            },
+            addItemToCart: (product: any) => {
+                set((state) => ({
+                    itemsInCart: [...state.itemsInCart, products + product],
+                }))
+            },
+            removeItemToCart: (product: any) => {
+                set((state) => ({
+                    itemsInCart: [...state.itemsInCart, products - product],
                 }))
             },
         }),
