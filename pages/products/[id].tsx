@@ -31,7 +31,7 @@ export const getStaticProps = async (context) => {
 const productPage = ({ data }) => {
     return (
         <Flex justify="center" alignItems="center" h="xl">
-            <Box align="center">
+            <Box align="center" key={data.id}>
                 <Text>{data.title}</Text>
                 <Image src={data.image} boxSize="400px" objectFit="contain" />
                 <Text p={4}>${data.price}</Text>

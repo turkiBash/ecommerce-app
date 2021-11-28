@@ -29,7 +29,7 @@ const ProductsPage = (props: any) => {
     return (
         <Flex justifyContent="center" overflow="hidden">
             <SimpleGrid columns={3} spacing={5} alignItems="center">
-                {data.map((product: any, index: number) => (
+                {data.map((product: any, index: any) => (
                     <Box
                         boxSize="400px"
                         // w="300px"
@@ -43,7 +43,7 @@ const ProductsPage = (props: any) => {
                         key={index}
                     >
                         {/* <Heading>Products</Heading> */}
-                        <Link href={'/products/' + product.id} key={product.id}>
+                        <Link href={'/products/' + product.id}>
                             <a>
                                 <Flex justifyContent="center">
                                     <Image

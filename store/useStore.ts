@@ -7,7 +7,7 @@ export type CartState = {
     removeProductFromCart: (id: number) => void
 }
 
-export const useStore = create<CartState>(
+const useStore = create<CartState>(
     persist(
         (set) => ({
             products: [],
@@ -19,7 +19,7 @@ export const useStore = create<CartState>(
             removeProductFromCart: (id: number) => {
                 set((state) => ({
                     products: state.products.filter(
-                        (product: number) => product.id !== id
+                        (prod: number) => prod.id !== id
                     ),
                 }))
             },
