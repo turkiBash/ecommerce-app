@@ -1,6 +1,7 @@
 import { Box, Flex, Text } from '@chakra-ui/layout'
 import { Image, Button } from '@chakra-ui/react'
 import axios from 'axios'
+import useStore from '../../store/useStore'
 
 export const getStaticPaths = async () => {
     const res = await axios.get('https://fakestoreapi.com/products')
@@ -29,13 +30,18 @@ export const getStaticProps = async (context) => {
 }
 
 const productPage = ({ data }) => {
+    const { addProductToCart } = useStore()
+    const addToCart = (data) => {
+        addProductToCart(data)
+    }
+
     return (
         <Flex justify="center" alignItems="center" h="xl">
             <Box align="center" key={data.id}>
                 <Text>{data.title}</Text>
                 <Image src={data.image} boxSize="400px" objectFit="contain" />
                 <Text p={4}>${data.price}</Text>
-                <Button>Add to Cart</Button>
+                <Button onClick={() => addToCart(data)}>Add to Cart</Button>
             </Box>
         </Flex>
     )
